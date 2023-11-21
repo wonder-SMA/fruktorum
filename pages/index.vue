@@ -2,16 +2,16 @@
 const { data } = await useFetch<THomeData>('/api/home');
 
 useSeoMeta({
-  title: data.value.title,
-  ogTitle: data.value.title,
-  description: data.value.description,
-  ogDescription: data.value.description,
+  title: data.value?.title,
+  ogTitle: data.value?.title,
+  description: data.value?.description,
+  ogDescription: data.value?.description,
 });
 </script>
 
 <template>
   <main class="main">
-    <ArticleList :data="data.body[0].data" />
+    <ArticleList v-if="data" :data="data.body" />
   </main>
 </template>
 

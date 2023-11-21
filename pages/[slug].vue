@@ -34,7 +34,7 @@ useSeoMeta({
 
 <template>
   <main class="main">
-    <template v-for="block in article.body" :key="block.id">
+    <template v-for="block in article?.body" :key="block.id">
       <component :is="blocks[block.type]" :data="block.data" />
     </template>
   </main>

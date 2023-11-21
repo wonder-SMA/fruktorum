@@ -1,6 +1,6 @@
 export default defineEventHandler(async event => {
   try {
-    const data = await $fetch<TResponse>(process.env.API_URL + event.context.params.slug);
+    const data = await $fetch<TResArticle>(process.env.API_URL + event.context.params.slug);
 
     return {
       title: data.meta.title,

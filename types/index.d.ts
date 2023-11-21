@@ -38,20 +38,34 @@ declare global {
     data: TIntroBlock | TTextBlock | TImageBlock | TSliderBlock | TArticleListBlock | '';
   };
 
-  type TResponse = {
-    page_type: 'home' | 'article';
+  type TResHome = {
+    page_type: 'home';
     meta: {
       title: string;
       description: string;
       slug: string;
     };
-    body: TArticleListBlock[] | TBlock[];
+    body: Array<{
+      type: 'article_list_block';
+      id: string;
+      data: TArticleListBlock;
+    }>;
+  };
+
+  type TResArticle = {
+    page_type: 'article';
+    meta: {
+      title: string;
+      description: string;
+      slug: string;
+    };
+    body: TBlock[];
   };
 
   type THomeData = {
     title: string;
     description: string;
-    body: TArticleListBlock[];
+    body: TArticleListBlock;
   };
 
   type TArticleData = {
