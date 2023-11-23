@@ -4,36 +4,29 @@ defineProps<{
 }>();
 </script>
 
-<template>
-  <section class="article-intro">
-    <NuxtImg class="article-intro__img" :src="data.image" quality="100" />
-    <div class="article-intro__content">
-      <h1 class="article-intro__title">{{ data.title }}</h1>
-      <div class="article-intro__info">
-        <div class="article-intro__info-section">
-          <NuxtImg
-            class="article-intro__info-icon"
-            src="reading-time-icon.svg"
-            width="16"
-            height="16"
-            quality="100"
-          />
-          <span class="article-intro__info-text">{{ data.reading_time }} мин время чтения</span>
-        </div>
-        <div class="article-intro__info-section">
-          <NuxtImg
-            class="article-intro__info-icon"
-            src="view-count-icon.svg"
-            width="16"
-            height="16"
-            quality="100"
-          />
-          <span class="article-intro__info-text">{{ data.views_count }} прочитали статью</span>
-        </div>
-      </div>
-      <p class="article-intro__text">{{ data.short_description }}</p>
-    </div>
-  </section>
+<template lang="pug">
+section.article-intro
+  NuxtImg.article-intro__img(:src="data.image" quality="100")
+  div.article-intro__content
+    h1.article-intro__title {{ data.title }}
+    div.article-intro__info
+      div.article-intro__info-section
+        NuxtImg.article-intro__info-icon(
+          :src="'reading-time-icon.svg'"
+          width="16"
+          height="16"
+          quality="100"
+        )
+        span.article-intro__info-text {{ data.reading_time }} мин время чтения
+      div.article-intro__info-section
+        NuxtImg.article-intro__info-icon(
+          :src="'view-count-icon.svg'"
+          width="16"
+          height="16"
+          quality="100"
+        )
+        span.article-intro__info-text {{ data.views_count }} прочитали статью
+    p.article-intro__text {{ data.short_description }}
 </template>
 
 <style lang="scss" scoped>

@@ -1,11 +1,9 @@
 <script setup lang="ts"></script>
 
-<template>
-  <header class="header">
-    <NuxtLink to="/">
-      <NuxtImg src="logo.svg" width="133" height="32" quality="100" />
-    </NuxtLink>
-  </header>
+<template lang="pug">
+header.header
+  NuxtLink(to="/")
+    NuxtImg(src="logo.svg" width="133" height="32" quality="100")
 </template>
 
 <style lang="scss" scoped>

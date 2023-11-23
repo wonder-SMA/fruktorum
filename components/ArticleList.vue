@@ -4,19 +4,12 @@ defineProps<{
 }>();
 </script>
 
-<template>
-  <div class="article-list">
-    <p class="article-list__title">{{ data.title }}</p>
-    <div class="article-list-content">
-      <ArticleCard
-        v-for="article in data.articles"
-        :key="article.link"
-        :src="article.image"
-        :title="article.title"
-        :link="article.link"
-      />
-    </div>
-  </div>
+<template lang="pug">
+div.article-list
+  p.article-list__title {{ data.title }}
+  div.article-list-content
+    ArticleCard(v-for="article in data.articles" :key="article.link" :src="article.image" :title="article.title"
+		 :link="article.link")
 </template>
 
 <style lang="scss" scoped>

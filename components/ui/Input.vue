@@ -24,17 +24,17 @@ const onChange = (event: Event) => {
 };
 </script>
 
-<template>
-  <input
-    :id="id"
-    class="input"
-    :type="type"
-    :name="name"
-    :placeholder="placeholder"
-    :autocomplete="autocomplete"
-    :required="isRequired"
-    @change="onChange"
-  />
+<template lang="pug">
+input.input(
+  :id="id"
+  :class="{ 'input--required': isRequired }"
+  :type="type"
+  :name="name"
+  :placeholder="placeholder"
+  :autocomplete="autocomplete"
+  :required="isRequired"
+  @change="onChange"
+)
 </template>
 
 <style lang="scss" scoped>

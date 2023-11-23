@@ -1,32 +1,23 @@
 <script setup lang="ts"></script>
 
-<template>
-  <footer class="footer">
-    <div class="footer__site-section">
-      <div class="footer__site-info">
-        <NuxtLink to="/">
-          <NuxtImg src="logo.svg" width="133" height="32" quality="100" />
-        </NuxtLink>
-        <p class="footer__site-desc">
-          Cтатьи о дизайне и искусстве, которые исследуют творческие вдохновения и актуальные
-          тенденции, раскрывая мир эстетики и креативности
-        </p>
-      </div>
-      <div class="footer__site-social">
-        <div class="footer__site-email">
-          <span class="footer__site-email-title">email</span>
-          <span class="footer__site-email-text">testblogsupport@gmail.com</span>
-        </div>
-        <div class="footer__site-social-media">
-          <NuxtImg src="fb-icon.svg" width="30" height="30" quality="100" />
-          <NuxtImg src="vk-icon.svg" width="30" height="30" quality="100" />
-          <NuxtImg src="inst-icon.svg" width="30" height="30" quality="100" />
-          <NuxtImg src="tg-icon.svg" width="30" height="30" quality="100" />
-        </div>
-      </div>
-    </div>
-    <SubscribeForm />
-  </footer>
+<template lang="pug">
+footer.footer
+  div.footer__site-section
+    div.footer__site-info
+      NuxtLink(to="/")
+        NuxtImg(src="logo.svg" width="133" height="32" quality="100")
+      p.footer__site-desc
+        | Cтатьи о дизайне и искусстве, которые исследуют творческие вдохновения и актуальные тенденции, раскрывая мир эстетики и креативности
+    div.footer__site-social
+      div.footer__site-email
+        span.footer__site-email-title email
+        span.footer__site-email-text testblogsupport@gmail.com
+      div.footer__site-social-media
+        NuxtImg(src="fb-icon.svg" width="30" height="30" quality="100")
+        NuxtImg(src="vk-icon.svg" width="30" height="30" quality="100")
+        NuxtImg(src="inst-icon.svg" width="30" height="30" quality="100")
+        NuxtImg(src="tg-icon.svg" width="30" height="30" quality="100")
+  SubscribeForm
 </template>
 
 <style lang="scss" scoped>

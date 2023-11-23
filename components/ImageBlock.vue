@@ -4,11 +4,10 @@ defineProps<{
 }>();
 </script>
 
-<template>
-  <figure class="image-block">
-    <NuxtImg class="image-block__img" :src="data.src" quality="100" />
-    <figcaption v-if="data.caption" class="image-block__caption">{{ data.caption }}</figcaption>
-  </figure>
+<template lang="pug">
+figure.image-block
+  NuxtImg.image-block__img(:src="data.src" quality="100")
+  figcaption.image-block__caption(v-if="data.caption") {{ data.caption }}
 </template>
 
 <style lang="scss" scoped>

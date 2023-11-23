@@ -8,11 +8,10 @@ const emit = defineEmits<{
 }>();
 </script>
 
-<template>
-  <form class="form" @submit="emit('submit', $event)">
-    <slot />
-    <UiButton type="secondary">{{ btnTitle }}</UiButton>
-  </form>
+<template lang="pug">
+form.form(@submit="emit('submit', $event)")
+  slot
+  UiButton(type="secondary") {{ btnTitle }}
 </template>
 
 <style lang="scss" scoped>

@@ -6,16 +6,13 @@ defineProps<{
 }>();
 </script>
 
-<template>
-  <article class="article-card">
-    <figure class="article-card__content">
-      <NuxtImg class="article-card__img" :src="src" quality="100" />
-      <figcaption class="article-card__caption">{{ title }}</figcaption>
-    </figure>
-    <NuxtLink :to="link">
-      <UiButton type="primary">Читать</UiButton>
-    </NuxtLink>
-  </article>
+<template lang="pug">
+article.article-card
+	figure.article-card__content
+		NuxtImg.article-card__img(:src="src" quality="100")
+		figcaption.article-card__caption {{ title }}
+	NuxtLink(:to="link")
+		UiButton(type="primary") Читать
 </template>
 
 <style lang="scss" scoped>

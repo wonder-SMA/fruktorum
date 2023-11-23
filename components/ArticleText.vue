@@ -25,7 +25,7 @@ onMounted(() => {
             .map((text, idx) => text + (idx + 1 < footerTextArr.length ? ',<br/>' : '<br/>'))
             .join('');
         }
-        elements[i].prepend(img);
+        elements[i].append(img);
       }
       removeEventListener('load', onLoad);
     };
@@ -35,8 +35,8 @@ onMounted(() => {
 });
 </script>
 
-<template>
-  <section ref="sectionRef" class="article-text" v-html="data"></section>
+<template lang="pug">
+section.article-text(:ref="sectionRef" v-html="data")
 </template>
 
 <style lang="scss">

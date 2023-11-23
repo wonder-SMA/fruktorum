@@ -4,10 +4,9 @@ defineProps<{
 }>();
 </script>
 
-<template>
-  <button :class="['button', `button-${type}`]">
-    <slot />
-  </button>
+<template lang="pug">
+button.button(:class="[`button-${type}`]")
+  slot
 </template>
 
 <style lang="scss" scoped>

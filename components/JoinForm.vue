@@ -1,31 +1,15 @@
 <script setup lang="ts"></script>
 
-<template>
-  <div class="join-form">
-    <NuxtImg class="join-form__img" src="form-image.jpg" quality="100" />
-    <div class="join-form__container">
-      <p class="join-form__title">Стань участником проекта</p>
-      <Form class="join-form__form" btn-title="Присоединиться">
-        <fieldset class="join-form__fieldset">
-          <UiInput name="username" placeholder="Имя" :is-required="true" />
-          <UiInput
-            type="tel"
-            name="phone"
-            placeholder="Телефон"
-            autocomplete="tel"
-            :is-required="true"
-          />
-          <UiInput
-            type="email"
-            name="email"
-            placeholder="Email"
-            autocomplete="email"
-            :is-required="true"
-          />
-        </fieldset>
-      </Form>
-    </div>
-  </div>
+<template lang="pug">
+div.join-form
+  NuxtImg.join-form__img(src="form-image.jpg" quality="100")
+  div.join-form__container
+    p.join-form__title Стань участником проекта
+    Form.join-form__form(btn-title="Присоединиться")
+      fieldset.join-form__fieldset
+        UiInput(name="username" placeholder="Имя" :is-required="true")
+        UiInput(type="tel" name="phone" placeholder="Телефон" autocomplete="tel" :is-required="true")
+        UiInput(type="email" name="email" placeholder="Email" autocomplete="email" :is-required="true")
 </template>
 
 <style lang="scss">

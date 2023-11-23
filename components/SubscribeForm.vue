@@ -1,19 +1,16 @@
 <script setup lang="ts"></script>
 
-<template>
-  <div class="subscribe-form">
-    <p class="subscribe-form__title">Подпишись на рассылку</p>
-    <Form class="subscribe-form__form" btn-title="Подписаться">
-      <UiInput
-        class="subscribe-form__input"
-        type="email"
-        name="email"
-        placeholder="Email"
-        autocomplete="email"
-        :is-required="true"
-      />
-    </Form>
-  </div>
+<template lang="pug">
+div.subscribe-form
+  p.subscribe-form__title Подпишись на рассылку
+  Form.subscribe-form__form(btn-title="Подписаться")
+    UiInput.subscribe-form__input(
+		    type="email"
+		    name="email"
+		    placeholder="Email"
+		    autocomplete="email"
+		    :is-required="true"
+    )
 </template>
 
 <style lang="scss">
