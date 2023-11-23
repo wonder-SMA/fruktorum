@@ -9,7 +9,7 @@ defineProps<{
 <template>
   <article class="article-card">
     <figure class="article-card__content">
-      <NuxtImg class="article-card__img" :src="src" width="427px" height="320px" quality="100" />
+      <NuxtImg class="article-card__img" :src="src" quality="100" />
       <figcaption class="article-card__caption">{{ title }}</figcaption>
     </figure>
     <NuxtLink :to="link">
@@ -20,20 +20,21 @@ defineProps<{
 
 <style lang="scss" scoped>
 .article-card {
-  width: 427px;
-  height: 476px;
-  flex-shrink: 0;
+  max-width: 427px;
+  max-height: 476px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
   .article-card__content {
+    margin-bottom: clamp(20px, 100vw * 30 / 1340, 30px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 20px;
+    gap: clamp(15px, 100vw * 20 / 1340, 20px);
 
     .article-card__img {
+      width: min(100vw, 427px);
+      aspect-ratio: 427 / 320;
       object-fit: cover;
     }
 
@@ -41,12 +42,32 @@ defineProps<{
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
-      font-size: 22px;
+      font-size: clamp(20px, 100vw * 22 / 1340, 22px);
       font-weight: 800;
-      line-height: 30px;
+      line-height: calc(30 / 22);
       color: var(--Text);
       text-overflow: ellipsis;
       overflow: hidden;
+    }
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .article-card {
+    .article-card__content {
+      .article-card__img {
+        width: min((100vw - clamp(20px, 100vw * 30 / 1340, 30px)) / 2, 427px);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .article-card {
+    .article-card__content {
+      .article-card__img {
+        width: min((100vw - 2 * clamp(20px, 100vw * 30 / 1340, 30px)) / 3, 427px);
+      }
     }
   }
 }

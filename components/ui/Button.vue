@@ -18,17 +18,15 @@ defineProps<{
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   font-family: Montserrat, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 26px;
+  line-height: calc(26 / 18);
   color: #ffffff;
   user-select: none;
   touch-action: manipulation;
   cursor: pointer;
-  transition: all 0.2s;
 }
 
 .button-primary {
@@ -47,6 +45,12 @@ defineProps<{
 
   &:hover {
     background-color: transparent;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .button {
+    font-size: 18px;
   }
 }
 </style>

@@ -23,19 +23,41 @@ defineProps<{
 .article-list {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: clamp(50px / 2.5, 100vw * 50 / 1340, 50px);
 
   .article-list__title {
-    font-size: 34px;
+    text-align: center;
+    font-size: clamp(34px / 1.4, 100vw * 34 / 1340, 34px);
     font-weight: 800;
-    line-height: 46px;
+    line-height: calc(46 / 34);
     color: var(--Text);
   }
 
   .article-list-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: 1fr;
+    gap: clamp(20px, 100vw * 30 / 1340, 30px);
+    place-items: center;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .article-list {
+    .article-list__title {
+      text-align: left;
+    }
+
+    .article-list-content {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .article-list {
+    .article-list-content {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
 }
 </style>

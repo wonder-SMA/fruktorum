@@ -6,6 +6,19 @@ const props = defineProps<{
 const currentPosition = ref(1);
 const sliderRef = ref(null);
 
+onMounted(() => {
+  // Приводим margin у изображения к текущему размеру слайдера при изменении размера viewport
+  window.onresize = () => {
+    if (sliderRef.value) {
+      const slider = sliderRef.value as HTMLElement;
+
+      (slider.children[0] as HTMLElement).style.marginLeft = `-${
+        slider.clientWidth * (currentPosition.value - 1)
+      }px`;
+    }
+  };
+});
+
 const onChangeImg = (direction: 'left' | 'right') => {
   if (sliderRef.value) {
     const slider = sliderRef.value as HTMLElement;
@@ -28,28 +41,16 @@ const onChangeImg = (direction: 'left' | 'right') => {
     <NuxtImg
       class="slider__left-arrow"
       src="left-arrow-icon.svg"
-      width="60"
-      height="60"
       quality="100"
       @click="onChangeImg('left')"
     />
     <div ref="sliderRef" class="slider__content">
-      <NuxtImg
-        v-for="src in data"
-        :key="src"
-        class="slider__img"
-        :src="src"
-        width="1112px"
-        height="550px"
-        quality="100"
-      />
+      <NuxtImg v-for="src in data" :key="src" class="slider__img" :src="src" quality="100" />
     </div>
     <span class="slider__counter">{{ currentPosition }} / {{ data.length }}</span>
     <NuxtImg
       class="slider__right-arrow"
       src="right-arrow-icon.svg"
-      width="60"
-      height="60"
       quality="100"
       @click="onChangeImg('right')"
     />
@@ -59,14 +60,14 @@ const onChangeImg = (direction: 'left' | 'right') => {
 <style lang="scss" scoped>
 .slider {
   position: relative;
-  height: 601px;
+  max-height: 601px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: clamp(20px, 100vw * 25 / 1340, 25px);
 
   .slider__content {
-    width: 1112px;
-    height: 550px;
+    width: min(100vw - min(calc((100vw * 220) / 1340), 220px), 1112px);
+    aspect-ratio: 1112 / 550;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -80,15 +81,16 @@ const onChangeImg = (direction: 'left' | 'right') => {
 
   .slider__counter {
     text-align: center;
-    font-size: 18px;
-    line-height: 26px;
+    font-size: clamp(16px, 100vw * 18 / 1340, 18px);
+    line-height: calc(26 / 18);
     color: var(--Black);
   }
 
   .slider__left-arrow,
   .slider__right-arrow {
     position: absolute;
-    top: 245px;
+    top: min((100vw - min(calc((100vw * 220) / 1340), 220px)) * 245 / 1112, 245px);
+    width: min(max((100vw - min(calc((100vw * 220) / 1340), 220px)) * 60 / 1112, 30px), 60px);
     cursor: pointer;
 
     &:hover {

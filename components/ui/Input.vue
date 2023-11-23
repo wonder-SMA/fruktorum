@@ -1,24 +1,24 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
-    id?: string | null;
+    id?: string | undefined;
     type?: string;
-    name?: string | null;
+    name?: string | undefined;
     placeholder?: string;
     autocomplete?: string;
     isRequired?: boolean;
   }>(),
   {
-    id: null,
+    id: undefined,
     type: 'text',
-    name: null,
+    name: undefined,
     placeholder: '',
     autocomplete: 'off',
     isRequired: false,
   }
 );
 
-const onChange = (event: InputEvent) => {
+const onChange = (event: Event) => {
   const input = event.target as HTMLInputElement;
   input.value ? input.classList.add('input_filled') : input.classList.remove('input_filled');
 };
@@ -39,15 +39,15 @@ const onChange = (event: InputEvent) => {
 
 <style lang="scss" scoped>
 .input {
-  width: 353px;
+  width: 100%;
   padding: 0 8px;
   border: none;
   border-bottom: 1px solid #8d959c;
   font-family: Montserrat, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 26px;
+  line-height: calc(26 / 18);
   color: #8d959c;
   background: transparent;
   outline: none;
@@ -64,5 +64,11 @@ const onChange = (event: InputEvent) => {
 .input_filled {
   border-bottom: 1px solid #fefefe;
   color: #fefefe;
+}
+
+@media screen and (min-width: 576px) {
+  .input {
+    font-size: 18px;
+  }
 }
 </style>

@@ -3,8 +3,9 @@
 <template>
   <div class="subscribe-form">
     <p class="subscribe-form__title">Подпишись на рассылку</p>
-    <Form btn-title="Подписаться" direction="row">
+    <Form class="subscribe-form__form" btn-title="Подписаться">
       <UiInput
+        class="subscribe-form__input"
         type="email"
         name="email"
         placeholder="Email"
@@ -15,21 +16,72 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .subscribe-form {
-  width: 100%;
-  height: 100px;
-  padding: 0 30px;
+  min-height: 100px;
+  padding: clamp(15px, 100vw * 30 / 992, 30px);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  gap: clamp(20px, 100vw * 37 / 992, 37px);
   background: var(--Text);
 
   .subscribe-form__title {
-    font-size: 22px;
+    font-size: clamp(20px, 100vw * 22 / 1340, 22px);
     font-weight: 800;
-    line-height: 30px;
+    line-height: calc(30 / 22);
     color: var(--White);
+  }
+
+  .subscribe-form__form {
+    justify-content: center;
+    flex-direction: column;
+    gap: clamp(20px, 100vw * 37 / 992, 37px);
+
+    .subscribe-form__input {
+      width: clamp(353px / 1.25, 100vw * 353 / 1340, 353px);
+    }
+
+    .button {
+      align-self: center;
+    }
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .subscribe-form {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0;
+
+    .subscribe-form__form {
+      .subscribe-form__input {
+        width: clamp(353px / 1.4, 100vw * 353 / 1340, 353px);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .subscribe-form {
+    .subscribe-form__form {
+      .subscribe-form__input {
+        width: clamp(353px / 1.25, 100vw * 353 / 1340, 353px);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .subscribe-form {
+    padding: 30px;
+    justify-content: space-between;
+
+    .subscribe-form__form {
+      flex-direction: row;
+      gap: 37px;
+    }
   }
 }
 </style>

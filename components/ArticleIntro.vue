@@ -6,13 +6,7 @@ defineProps<{
 
 <template>
   <section class="article-intro">
-    <NuxtImg
-      class="article-intro__img"
-      :src="data.image"
-      width="541px"
-      height="580px"
-      quality="100"
-    />
+    <NuxtImg class="article-intro__img" :src="data.image" quality="100" />
     <div class="article-intro__content">
       <h1 class="article-intro__title">{{ data.title }}</h1>
       <div class="article-intro__info">
@@ -44,30 +38,31 @@ defineProps<{
 
 <style lang="scss" scoped>
 .article-intro {
-  height: 580px;
   display: flex;
-  gap: 30px;
+  flex-direction: column;
 
   .article-intro__img {
+    width: 100%;
+    aspect-ratio: 1340 / 550;
     object-fit: cover;
-    clip-path: inset(0 round 2px 220px 2px 2px);
+    clip-path: inset(0 round 2px min(100vw * 220 / 1340, 220px) 2px 2px);
   }
 
   .article-intro__content {
-    padding-top: 90px;
+    padding-top: min(100vw / 2.5 * 90 / 1340, 90px);
     display: flex;
     flex-direction: column;
 
     .article-intro__title {
-      margin-bottom: 30px;
-      font-size: 56px;
+      margin-bottom: min(100vw / 2.5 * 30 / 1340, 30px);
+      font-size: clamp(56px / 1.8, 100vw * 56 / 1340, 56px);
       font-weight: 800;
-      line-height: 66px;
+      line-height: calc(66 / 56);
       color: var(--Text);
     }
 
     .article-intro__info {
-      margin-bottom: 50px;
+      margin-bottom: min(100vw / 2.5 * 50 / 1340, 50px);
       display: flex;
       flex-direction: column;
       gap: 4px;
@@ -81,17 +76,54 @@ defineProps<{
         }
 
         .article-intro__info-text {
-          font-size: 14px;
-          line-height: 20px;
+          font-size: clamp(12px, 100vw * 14 / 1340, 14px);
+          line-height: calc(20 / 14);
           color: var(--Gray);
         }
       }
     }
 
     .article-intro__text {
-      font-size: 18px;
-      line-height: 26px;
+      font-size: clamp(16px, 100vw * 18 / 1340, 18px);
+      line-height: calc(26 / 18);
       color: var(--Text);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .article-intro {
+    display: block;
+
+    .article-intro__img {
+      width: min(100vw * 541 / 1340, 541px);
+      aspect-ratio: 541 / 580;
+      margin-right: 30px;
+      float: left;
+    }
+
+    .article-intro__content {
+      padding-top: min(100vw / 4.1875 * 90 / 1340, 90px);
+
+      .article-intro__title {
+        margin-bottom: min(100vw / 1.8 * 30 / 1340, 30px);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .article-intro {
+    .article-intro__content {
+      padding-top: min(100vw * 90 / 1340, 90px);
+
+      .article-intro__title {
+        margin-bottom: min(100vw * 30 / 1340, 30px);
+      }
+
+      .article-intro__info {
+        margin-bottom: min(100vw * 50 / 1340, 50px);
+      }
     }
   }
 }

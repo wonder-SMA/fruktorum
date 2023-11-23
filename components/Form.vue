@@ -1,13 +1,7 @@
 <script setup lang="ts">
-withDefaults(
-  defineProps<{
-    btnTitle: string;
-    direction?: 'column' | 'row';
-  }>(),
-  {
-    direction: 'column',
-  }
-);
+defineProps<{
+  btnTitle: string;
+}>();
 
 const emit = defineEmits<{
   submit: [e: Event];
@@ -15,7 +9,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <form :class="['form', `form-${direction}`]" @submit="emit('submit', $event)">
+  <form class="form" @submit="emit('submit', $event)">
     <slot />
     <UiButton type="secondary">{{ btnTitle }}</UiButton>
   </form>
@@ -24,16 +18,5 @@ const emit = defineEmits<{
 <style lang="scss" scoped>
 .form {
   display: flex;
-}
-
-.form-column {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 50px;
-}
-
-.form-row {
-  flex-direction: row;
-  gap: 37px;
 }
 </style>

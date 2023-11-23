@@ -12,7 +12,11 @@ onMounted(() => {
     img.src = 'blockquote-icon.svg';
 
     const onLoad = () => {
-      img.setAttribute('style', 'position: absolute; top: 0; left: 0;');
+      img.setAttribute(
+        'style',
+        'position: absolute; top: 0; left: 0; width: min(100vw * 80 / 1340, 80px); aspect-ratio: 80 / 64;'
+      );
+
       for (let i = 0; i < elements.length; i++) {
         const footerTextArr = elements[i]?.lastChild?.textContent?.split(', ');
 
@@ -21,7 +25,7 @@ onMounted(() => {
             .map((text, idx) => text + (idx + 1 < footerTextArr.length ? ',<br/>' : '<br/>'))
             .join('');
         }
-        elements[i].append(img);
+        elements[i].prepend(img);
       }
       removeEventListener('load', onLoad);
     };
@@ -37,20 +41,20 @@ onMounted(() => {
 
 <style lang="scss">
 .article-text {
-  width: 884px;
-  margin: 0 auto;
+  width: 100vw;
+  margin: 0;
 
   h2 {
-    margin-bottom: 50px;
-    font-size: 34px;
+    margin-bottom: clamp(20px, 100vw * 50 / 1340, 50px);
+    font-size: clamp(34px / 1.4, 100vw * 34 / 1340, 34px);
     font-weight: 800;
-    line-height: 46px;
+    line-height: calc(46 / 34);
     color: var(--Text);
   }
 
   ul {
     margin: 15px 0 20px 0;
-    padding-left: 136px;
+    padding-left: min(100vw * 136 / 1340, 136px);
     list-style: none;
 
     li {
@@ -72,13 +76,17 @@ onMounted(() => {
 
   p,
   li {
-    font-size: 18px;
-    line-height: 26px;
+    font-size: clamp(16px, 100vw * 18 / 1340, 18px);
+    line-height: calc(26 / 18);
   }
 
   p {
     margin-bottom: 20px;
     color: var(--Text);
+  }
+
+  p:has(~ ul) {
+    margin-bottom: 0;
   }
 
   li {
@@ -91,8 +99,8 @@ onMounted(() => {
 
   blockquote {
     position: relative;
-    margin: 20px 0;
-    padding-left: 116px;
+    margin-top: clamp(30px, 100vw * 40 / 1340, 40px);
+    padding-left: min(100vw * 116 / 1340, 116px);
     display: flex;
     flex-direction: column;
 
@@ -103,14 +111,17 @@ onMounted(() => {
     }
 
     footer {
-      font-size: 14px;
-      line-height: 20px;
+      font-size: clamp(12px, 100vw * 14 / 1340, 14px);
+      line-height: calc(20 / 14);
       color: var(--Gray);
     }
   }
+}
 
-  blockquote:last-child {
-    margin: 20px 0 0 0;
+@media screen and (min-width: 768px) {
+  .article-text {
+    width: clamp(768px, 100vw * 884 / 1340, 884px);
+    margin: 0 auto;
   }
 }
 </style>

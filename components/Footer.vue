@@ -31,23 +31,26 @@
 
 <style lang="scss" scoped>
 .footer {
-  width: 100%;
-  height: 332px;
-  margin-top: 200px;
+  min-height: 332px;
+  margin-top: clamp(200px / 2.5, 100vw * 200 / 1340, 200px);
 
   .footer__site-section {
-    padding: 50px 0 70px 0;
+    padding: clamp(50px / 4, 100vw * 50 / 1340, 50px) clamp(78px / 4, 100vw * 78 / 1340, 78px)
+      clamp(70px / 4, 100vw * 70 / 1340, 70px) 0;
     display: flex;
-    gap: 602px;
+    flex-direction: column;
+    justify-content: space-between;
 
     .footer__site-info {
+      margin-right: 20px;
       display: flex;
       flex-direction: column;
       gap: 20px;
 
       .footer__site-desc {
-        width: 426px;
-        font-size: 14px;
+        width: 100%;
+        max-width: 426px;
+        font-size: clamp(12px, 100vw * 14 / 1340, 14px);
         line-height: 20px;
         color: var(--Gray);
       }
@@ -57,21 +60,21 @@
       padding-top: 14px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: clamp(20px, 100vw * 24 / 992, 24px);
 
       .footer__site-email {
         display: flex;
         flex-direction: column;
 
         .footer__site-email-title {
-          font-size: 14px;
-          line-height: 20px;
+          font-size: clamp(12px, 100vw * 14 / 1340, 14px);
+          line-height: calc(20 / 14);
           color: var(--Gray);
         }
 
         .footer__site-email-text {
-          font-size: 18px;
-          line-height: 22px;
+          font-size: clamp(16px, 100vw * 18 / 1340, 18px);
+          line-height: calc(22 / 18);
           color: var(--Text);
         }
       }
@@ -81,6 +84,22 @@
         flex-direction: row;
         gap: 20px;
       }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    .footer__site-section {
+      flex-direction: row;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .footer {
+    .footer__site-section {
+      padding: 50px 78px 70px 0;
     }
   }
 }
