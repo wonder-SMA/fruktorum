@@ -4,8 +4,8 @@
 footer.footer
   div.footer__site-section
     div.footer__site-info
-      NuxtLink(to="/")
-        NuxtImg(src="logo.svg" width="133" height="32" quality="100")
+      NuxtLink(to="/" aria-label="Go to homepage")
+        NuxtImg(src="logo.svg" width="133" height="32" loading="lazy" alt="Logo")
       p.footer__site-desc
         | Cтатьи о дизайне и искусстве, которые исследуют творческие вдохновения и актуальные тенденции, раскрывая мир эстетики и креативности
     div.footer__site-social
@@ -13,10 +13,10 @@ footer.footer
         span.footer__site-email-title email
         span.footer__site-email-text testblogsupport@gmail.com
       div.footer__site-social-media
-        NuxtImg(src="fb-icon.svg" width="30" height="30" quality="100")
-        NuxtImg(src="vk-icon.svg" width="30" height="30" quality="100")
-        NuxtImg(src="inst-icon.svg" width="30" height="30" quality="100")
-        NuxtImg(src="tg-icon.svg" width="30" height="30" quality="100")
+        NuxtImg(src="fb-icon.svg" width="30" height="30" loading="lazy" alt="fb icon")
+        NuxtImg(src="vk-icon.svg" width="30" height="30" loading="lazy" alt="vk icon")
+        NuxtImg(src="inst-icon.svg" width="30" height="30" loading="lazy" alt="inst icon.")
+        NuxtImg(src="tg-icon.svg" width="30" height="30" loading="lazy" alt="tg icon")
   SubscribeForm
 </template>
 

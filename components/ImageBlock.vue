@@ -6,7 +6,8 @@ defineProps<{
 
 <template lang="pug">
 figure.image-block
-  NuxtImg.image-block__img(:src="data.src" quality="100")
+  NuxtImg.image-block__img(:src="data.src" sizes="xs:320px sm:576px md:768px lg:992px xl:1200px xxl:1340px"
+	  loading="lazy" :alt="data.caption")
   figcaption.image-block__caption(v-if="data.caption") {{ data.caption }}
 </template>
 

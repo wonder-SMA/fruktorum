@@ -9,9 +9,9 @@ defineProps<{
 <template lang="pug">
 article.article-card
 	figure.article-card__content
-		NuxtImg.article-card__img(:src="src" quality="100")
+		NuxtImg.article-card__img(:src="src" sizes="xs:100vw sm:278px md:374px lg:316px xl:382px" alt="Article card image")
 		figcaption.article-card__caption {{ title }}
-	NuxtLink(:to="link")
+	NuxtLink(:to="link" aria-label="Читать")
 		UiButton(type="primary") Читать
 </template>
 

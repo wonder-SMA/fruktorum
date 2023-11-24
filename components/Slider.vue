@@ -38,11 +38,12 @@ const onChangeImg = (direction: 'left' | 'right') => {
 
 <template lang="pug">
 div.slider
-  NuxtImg.slider__left-arrow(src="left-arrow-icon.svg" quality="100" @click="onChangeImg('left')")
+  NuxtImg.slider__left-arrow(src="left-arrow-icon.svg" loading="lazy" @click="onChangeImg('left')" alt="Slide left arrow icon")
   div.slider__content(ref="sliderRef")
-    NuxtImg.slider__img(v-for="src in data" :key="src" :src="src" quality="100")
+    NuxtImg.slider__img(v-for="(src, idx) in data" :key="src" :src="src"
+	    sizes="xs:267px sm:481px md:642px lg:829px xl:1003px" loading="lazy" :alt="'Slide image №' + idx")
   span.slider__counter {{ currentPosition }} / {{ data.length }}
-  NuxtImg.slider__right-arrow(src="right-arrow-icon.svg" quality="100" @click="onChangeImg('right')")
+  NuxtImg.slider__right-arrow(src="right-arrow-icon.svg" loading="lazy" @click="onChangeImg('right')" alt="Slide right arrow icon")
 </template>
 
 <style lang="scss" scoped>

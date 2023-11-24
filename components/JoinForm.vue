@@ -2,7 +2,8 @@
 
 <template lang="pug">
 div.join-form
-  NuxtImg.join-form__img(src="form-image.jpg" quality="100")
+  NuxtImg.join-form__img(src="form-image.jpg" sizes="xs:284px sm:512px md:341px lg:440px xl:533px"
+    loading="lazy" alt="Join form image")
   div.join-form__container
     p.join-form__title Стань участником проекта
     Form.join-form__form(btn-title="Присоединиться")

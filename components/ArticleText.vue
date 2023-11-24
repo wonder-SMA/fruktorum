@@ -36,7 +36,7 @@ onMounted(() => {
 </script>
 
 <template lang="pug">
-section.article-text(:ref="sectionRef" v-html="data")
+section.article-text(:ref="(el) => sectionRef = el" v-html="data")
 </template>
 
 <style lang="scss">

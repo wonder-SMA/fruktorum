@@ -6,7 +6,8 @@ defineProps<{
 
 <template lang="pug">
 section.article-intro
-  NuxtImg.article-intro__img(:src="data.image" quality="100")
+  NuxtImg.article-intro__img(:src="data.image" sizes="xs:100vw sm:100vw md:310px lg:400px xl:484px"
+	  alt="Article intro image")
   div.article-intro__content
     h1.article-intro__title {{ data.title }}
     div.article-intro__info
@@ -15,7 +16,6 @@ section.article-intro
           :src="'reading-time-icon.svg'"
           width="16"
           height="16"
-          quality="100"
         )
         span.article-intro__info-text {{ data.reading_time }} мин время чтения
       div.article-intro__info-section
@@ -23,7 +23,6 @@ section.article-intro
           :src="'view-count-icon.svg'"
           width="16"
           height="16"
-          quality="100"
         )
         span.article-intro__info-text {{ data.views_count }} прочитали статью
     p.article-intro__text {{ data.short_description }}

@@ -9,10 +9,9 @@ useSeoMeta({
 });
 </script>
 
-<template>
-  <main class="main">
-    <ArticleList v-if="data" :data="data.body" />
-  </main>
+<template lang="pug">
+main.main
+  ArticleList(v-if="data" :data="data.body")
 </template>
 
 <style lang="scss" scoped></style>

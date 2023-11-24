@@ -32,12 +32,10 @@ useSeoMeta({
 });
 </script>
 
-<template>
-  <main class="main">
-    <template v-for="block in article?.body" :key="block.id">
-      <component :is="blocks[block.type]" :data="block.data" />
-    </template>
-  </main>
+<template lang="pug">
+main.main
+  template(v-for="block in article?.body" :key="block.id")
+    component(:is="blocks[block.type]" :data="block.data")
 </template>
 
 <style lang="scss" scoped></style>

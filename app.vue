@@ -1,7 +1,14 @@
-<template>
-  <div id="root">
-    <Header />
-    <NuxtPage />
-    <Footer />
-  </div>
+<script setup lang="ts">
+useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
+});
+</script>
+
+<template lang="pug">
+#root
+  Header
+  NuxtPage
+  Footer
 </template>

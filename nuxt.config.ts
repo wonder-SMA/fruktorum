@@ -1,18 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/google-fonts', '@nuxt/image'],
-  css: ['@/assets/css/main.scss'],
-  googleFonts: {
-    families: {
-      Montserrat: {
-        wght: [400, 800],
-        ital: [300],
-      },
-      Ubuntu: [400],
+  modules: ['@nuxt/image-edge', '@nuxt/image'],
+  css: ['@/assets/fonts/fonts.scss', '@/assets/css/main.scss'],
+  image: {
+    provider: 'vercel',
+    domains: ['devtwit8.ru'],
+    format: ['avif'],
+    screens: {
+      xs: 320,
+      sm: 576,
+      md: 768,
+      lg: 992,
+      xl: 1200,
+      xxl: 1340,
     },
-    display: 'swap',
-    download: false,
-    overwriting: true,
+    quality: 70,
   },
 });

@@ -2,8 +2,8 @@
 
 <template lang="pug">
 header.header
-  NuxtLink(to="/")
-    NuxtImg(src="logo.svg" width="133" height="32" quality="100")
+  NuxtLink(to="/" aria-label="Go to homepage")
+    NuxtImg(src="logo.svg" width="133" height="32" alt="Logo")
 </template>
 
 <style lang="scss" scoped>
